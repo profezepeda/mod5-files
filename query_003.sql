@@ -1,0 +1,30 @@
+CREATE TABLE especies (
+	idespecie TINYINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nombre VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE razas (
+	idraza SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	idespecie TINYINT UNSIGNED NOT NULL,
+	nombre VARCHAR(30),
+	FOREIGN KEY (idespecie) REFERENCES especies(idespecie)
+);
+
+CREATE TABLE mascotas (
+	idmascota MEDIUMINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	nombre VARCHAR(50),
+	fechanacimiento DATE,
+	idraza SMALLINT UNSIGNED NOT NULL,
+	sexo ENUM('M', 'H'),
+	FOREIGN KEY (idraza) REFERENCES razas(idraza)
+);
+
+
+ALTER TABLE personas ADD coluRna VARCHAR(30) NOT NULL DEFAULT 'hola';
+ALTER TABLE personas MODIFY coluRna VARCHAR(50) NOT NULL DEFAULT 'hola2';
+ALTER TABLE personas RENAME COLUMN coluRna TO columna;
+ALTER TABLE personas RENAME COLUMN rut TO run;
+
+ALTER TABLE personas ADD columna1 varchar(30), ADD columna2 INT;
+
+
